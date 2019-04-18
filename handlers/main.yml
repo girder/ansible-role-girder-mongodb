@@ -1,8 +1,7 @@
 ---
 - name: Restart MongoDB
-  systemd:
+  service:
     name: mongodb
-    daemon_reload: true
     state: restarted
   become: true
   become_user: root
