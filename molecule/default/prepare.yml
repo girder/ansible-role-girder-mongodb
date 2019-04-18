@@ -11,3 +11,8 @@
       apt:
         name: iproute2
         state: present
+    # Ubuntu 16.04 doesn't include this by default
+    - name: Ensure APT HTTPS support
+      apt:
+        name: apt-transport-https
+        state: present
