@@ -1,6 +1,7 @@
 girder.mongodb
 ==============
 [![Apache 2.0](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://raw.githubusercontent.com/girder/ansible-role-girder-mongodb/master/LICENSE)
+[![Tests](https://circleci.com/gh/girder/ansible-role-girder-mongodb.svg?style=svg)](https://circleci.com/gh/girder/ansible-role-girder-mongodb)
 
 An Ansible role to install [MongoDB server](https://www.mongodb.com/download-center/community).
 
