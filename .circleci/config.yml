@@ -1,0 +1,19 @@
+---
+version: 2
+jobs:
+  build:
+    docker:
+      - image: quay.io/ansible/molecule:2.20.1
+
+    # Ansible finds the role by its exact directory name
+    working_directory: ~/ansible-role-girder-mongodb
+
+    steps:
+      - checkout
+
+      - setup_remote_docker:
+          docker_layer_caching: true
+
+      - run:
+          name: Run Molecule
+          command: molecule test
