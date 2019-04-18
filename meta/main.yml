@@ -1,0 +1,24 @@
+---
+galaxy_info:
+  role_name: mongodb
+  description: Install the MongoDB database
+
+  author: Kitware, Inc.
+  company: Kitware, Inc.
+  issue_tracker_url: https://github.com/girder/ansible-role-girder-mongodb/issues
+
+  license: Apache
+
+  min_ansible_version: 2.7
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - xenial
+        - bionic
+
+  galaxy_tags:
+    - database
+    - nosql
+    - mongodb
+    - mongo

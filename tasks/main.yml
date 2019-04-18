@@ -1,0 +1,49 @@
+---
+- name: Add MongoDB PPA key
+  apt_key:
+    id: "{{ mongodb_ubuntu_apt_key }}"
+    keyserver: "keyserver.ubuntu.com"
+  become: true
+  become_user: root
+
+- name: Add MongoDB PPA
+  apt_repository:
+    repo: >
+      deb
+      https://repo.mongodb.org/apt/ubuntu
+      {{ ansible_distribution_release }}/mongodb-org/{{ mongodb_version }}
+      multiverse
+    update_cache: true
+  become: true
+  become_user: root
+
+- name: Install MongoDB package
+  apt:
+    name: mongodb-org-server
+  become: true
+  become_user: root
+
+- name: Create MongoDB data directory
+  file:
+    path: "{{ mongodb_data_path }}"
+    owner: mongodb
+    group: mongodb
+    state: directory
+    recurse: true
+  become: true
+  become_user: root
+
+- name: Install MongoDB configuration
+  template:
+    src: mongod.conf.j2
+    dest: /etc/mongod.conf
+  become: true
+  become_user: root
+
+- name: Enable MongoDB service
+  systemd:
+    name: mongod
+    daemon_reload: true
+    enabled: true
+  become: true
+  become_user: root
