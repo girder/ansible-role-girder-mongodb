@@ -18,6 +18,17 @@ platforms:
       - /run/lock
     security_opts:
       - seccomp=unconfined
+  - name: ubuntu16
+    image: solita/ubuntu-systemd:16.04
+    privileged: false
+    override_command: false
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    tmpfs:
+      - /run
+      - /run/lock
+    security_opts:
+      - seccomp=unconfined
 provisioner:
   name: ansible
   lint:
