@@ -20,6 +20,8 @@
 - name: Install MongoDB package
   apt:
     name: mongodb-org-server
+  notify:
+    - Restart MongoDB
   become: true
   become_user: root
 
@@ -30,6 +32,8 @@
     group: mongodb
     state: directory
     recurse: true
+  notify:
+    - Restart MongoDB
   become: true
   become_user: root
 
@@ -37,6 +41,8 @@
   template:
     src: mongod.conf.j2
     dest: /etc/mongod.conf
+  notify:
+    - Restart MongoDB
   become: true
   become_user: root
 
