@@ -42,6 +42,11 @@ def test_mongodb_service(host):
     assert mongodb_service.is_enabled
 
 
-def test_mongodb_socket(host):
+def test_mongodb_socket_private(host):
     mongodb_socket = host.socket("tcp://127.0.0.1:27017")
     assert mongodb_socket.is_listening
+
+
+def test_mongodb_socket_public(host):
+    mongodb_socket = host.socket("tcp://0.0.0.0:27017")
+    assert not mongodb_socket.is_listening
