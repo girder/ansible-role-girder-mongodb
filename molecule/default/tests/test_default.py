@@ -1,10 +1,5 @@
 import os
 
-import testinfra.utils.ansible_runner
-
-testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
-    os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
-
 
 def test_mongodb_install(host):
     mongodb_package = host.package('mongodb-org-server')
@@ -38,8 +33,8 @@ def test_mongodb_data_file(host):
 
 def test_mongodb_service(host):
     mongodb_service = host.service('mongod')
-    assert mongodb_service.is_running
     assert mongodb_service.is_enabled
+    assert mongodb_service.is_running
 
 
 def test_mongodb_socket_private(host):
