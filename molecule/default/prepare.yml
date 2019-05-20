@@ -2,6 +2,7 @@
 - name: Prepare
   hosts: all
   tasks:
+    # gpg is needed to add other APT repositories
     - name: Install gnupg2
       apt:
         name: gnupg2
