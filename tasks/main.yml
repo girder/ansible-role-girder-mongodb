@@ -20,6 +20,7 @@
 - name: Install MongoDB package
   apt:
     name: mongodb-org-server
+    force_apt_get: true
   notify:
     - Restart MongoDB
   become: true
