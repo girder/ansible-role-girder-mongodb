@@ -48,7 +48,7 @@
   become_user: root
 
 - name: Enable MongoDB service
-  service:
+  systemd:
     name: mongod
     enabled: true
   become: true

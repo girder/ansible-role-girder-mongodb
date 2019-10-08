@@ -8,7 +8,7 @@ An Ansible role to install [MongoDB server](https://www.mongodb.com/download-cen
 Requirements
 ------------
 
-Ubuntu 16.04+.
+Ubuntu 18.04+.
 
 Role Variables
 --------------
