@@ -18,9 +18,11 @@
   become: true
   become_user: root
 
-- name: Install MongoDB package
+- name: Install MongoDB packages
   apt:
-    name: mongodb-org-server
+    name: 
+      - mongodb-org-server
+      - mongodb-org-tools
     force_apt_get: true
   notify:
     - Restart MongoDB
