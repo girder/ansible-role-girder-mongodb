@@ -12,7 +12,7 @@ Ubuntu 18.04+.
 
 | parameter             | required | default            | comments                                                                |
 | --------------------- | -------- | ------------------ | ----------------------------------------------------------------------- |
-| `mongodb_version`     | no       | `4.0`              | The major.minor version of MongoDB to install.                          |
+| `mongodb_version`     | no       | `4.2`              | The major.minor version of MongoDB to install.                          |
 | `mongodb_data_path`   | no       | `/var/lib/mongodb` | The filesystem path where data files will be persisted.                 |
 | `mongodb_bind_public` | no       | `false`            | Whether to bind to all network interfaces. **This is a security risk.** |
 
