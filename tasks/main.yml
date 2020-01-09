@@ -1,7 +1,7 @@
 ---
 - name: Add MongoDB PPA key
   apt_key:
-    id: "{{ mongodb_ubuntu_apt_keys[mongodb_version] }}"
+    id: "{{ mongodb_ubuntu_apt_keys[mongodb_version|string] }}"
     # https://unix.stackexchange.com/a/110594
     keyserver: "hkps://keyserver.ubuntu.com:443"
   become: true
