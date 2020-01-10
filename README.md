@@ -29,6 +29,15 @@ A typical playbook using this role may look like:
     - role: girder.mongodb
 ```
 
+A typical
+[Ansible Galaxy `requirements.yml` file](https://galaxy.ansible.com/docs/using/installing.html#installing-multiple-roles-from-a-file)
+should look like:
+
+```yaml
+- src: girder.mongodb
+  version: master
+```
+
 ## License
 
 [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)
