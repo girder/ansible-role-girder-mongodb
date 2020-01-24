@@ -21,8 +21,11 @@
 - name: Install MongoDB packages
   apt:
     name:
-      - mongodb-org-server
-      - mongodb-org-tools
+      # The "mongodb_version" is the only one available in the PPA on a clean
+      # install, but an existing install may have other minor versions
+      # available or installed
+      - "mongodb-org-server={{ mongodb_version }}*"
+      - "mongodb-org-tools={{ mongodb_version }}*"
     force_apt_get: true
   notify:
     - Restart MongoDB
