@@ -15,6 +15,14 @@ jobs:
           docker_layer_caching: true
 
       - run:
+          name: Install Testinfra
+          command: pip3 install testinfra
+
+      - run:
+          name: Upgrade ansible-lint
+          command: pip3 install --upgrade ansible-lint
+
+      - run:
           name: Run Molecule
           command: molecule test
 
