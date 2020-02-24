@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: quay.io/ansible/molecule:2.22
+      - image: quay.io/ansible/molecule:3.0.2
 
     # Ansible finds the role by its exact directory name
     working_directory: ~/ansible-role-girder-mongodb

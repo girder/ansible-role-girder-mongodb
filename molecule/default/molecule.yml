@@ -1,6 +1,9 @@
 ---
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+  flake8
 dependency:
   name: galaxy
   enabled: false
@@ -20,22 +23,8 @@ platforms:
       - seccomp=unconfined
 provisioner:
   name: ansible
-  lint:
-    name: ansible-lint
-  inventory:
-    group_vars:
-      all:
-        # Defining this here, instead of in playbooks, also ensures it's picked
-        # up by Testinfra
-        ansible_python_interpreter: "/usr/bin/python3"
   playbooks:
     prepare: prepare.yml
-    converge: playbook.yml
-scenario:
-  name: default
+    converge: converge.yml
 verifier:
   name: testinfra
-  options:
-    W: ignore::DeprecationWarning
-  lint:
-    name: flake8
