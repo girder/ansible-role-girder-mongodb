@@ -1,2 +1,2 @@
-molecule
-docker
+molecule[docker,lint]
+testinfra

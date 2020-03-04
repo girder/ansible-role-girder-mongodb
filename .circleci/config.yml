@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: quay.io/ansible/molecule:2.22
+      - image: quay.io/ansible/molecule:3.0.2
 
     # Ansible finds the role by its exact directory name
     working_directory: ~/ansible-role-girder-mongodb
@@ -13,6 +13,14 @@ jobs:
 
       - setup_remote_docker:
           docker_layer_caching: true
+
+      - run:
+          name: Install Testinfra
+          command: pip3 install testinfra
+
+      - run:
+          name: Upgrade ansible-lint
+          command: pip3 install --upgrade ansible-lint
 
       - run:
           name: Run Molecule
