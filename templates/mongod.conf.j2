@@ -1,7 +1,5 @@
 storage:
   dbPath: {{ mongodb_data_path }}
-  journal:
-    enabled: true
 
 systemLog:
   destination: file
@@ -11,6 +9,9 @@ systemLog:
 net:
   port: 27017
   bindIp: {{ '0.0.0.0' if mongodb_bind_public else '127.0.0.1' }}
+
+security:
+  authorization: {{ 'enabled' if mongodb_authorization else 'disabled' }}
 
 processManagement:
   timeZoneInfo: /usr/share/zoneinfo

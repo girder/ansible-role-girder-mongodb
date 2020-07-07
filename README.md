@@ -10,11 +10,12 @@ Ubuntu 18.04+.
 
 ## Role Variables
 
-| parameter             | required | default            | comments                                                                |
-| --------------------- | -------- | ------------------ | ----------------------------------------------------------------------- |
-| `mongodb_version`     | no       | `4.2`              | The major.minor version of MongoDB to install.                          |
-| `mongodb_data_path`   | no       | `/var/lib/mongodb` | The filesystem path where data files will be persisted.                 |
-| `mongodb_bind_public` | no       | `false`            | Whether to bind to all network interfaces. **This is a security risk.** |
+| parameter               | required | default            | comments                                                                |
+| ----------------------- | -------- | ------------------ | ----------------------------------------------------------------------- |
+| `mongodb_version`       | no       | `4.2`              | The major.minor version of MongoDB to install.                          |
+| `mongodb_data_path`     | no       | `/var/lib/mongodb` | The filesystem path where data files will be persisted.                 |
+| `mongodb_bind_public`   | no       | `false`            | Whether to bind to all network interfaces. **This is a security risk.** |
+| `mongodb_authorization` | no       | `false`            | Whether to enable access control. Users must be created separately.     |
 
 ## Example Playbook
 
