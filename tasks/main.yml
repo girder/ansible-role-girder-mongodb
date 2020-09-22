@@ -57,5 +57,6 @@
   systemd:
     name: mongod
     enabled: true
+    daemon_reload: true
   become: true
   become_user: root
