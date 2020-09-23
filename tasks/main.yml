@@ -56,7 +56,7 @@
 - name: Enable MongoDB service
   systemd:
     name: mongod
-    enabled: true
     daemon_reload: true
+    enabled: true
   become: true
   become_user: root
