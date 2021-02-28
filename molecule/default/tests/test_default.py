@@ -4,7 +4,7 @@ import os
 def test_mongodb_install(host):
     mongodb_package = host.package('mongodb-org-server')
     assert mongodb_package.is_installed
-    assert mongodb_package.version.startswith('4.2')
+    assert mongodb_package.version.startswith('4.4')
 
 
 def test_mongodb_user(host):
