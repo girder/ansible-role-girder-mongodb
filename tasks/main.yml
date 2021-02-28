@@ -33,7 +33,7 @@
   become_user: root
 
 - name: Create MongoDB data directory
-  file:
+  file: # noqa 208
     path: "{{ mongodb_data_path }}"
     owner: mongodb
     group: mongodb
@@ -48,6 +48,7 @@
   template:
     src: mongod.conf.j2
     dest: /etc/mongod.conf
+    mode: 0644
   notify:
     - Restart MongoDB
   become: true
