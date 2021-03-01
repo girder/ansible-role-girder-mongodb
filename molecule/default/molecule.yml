@@ -1,8 +1,8 @@
 ---
 lint: |
   set -e
-  yamllint .
-  ansible-lint
+  yamllint --config-data '{extends: relaxed, ignore: .tox/}' .
+  ansible-lint --exclude '.tox/'
   flake8
 dependency:
   name: galaxy
