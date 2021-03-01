@@ -63,7 +63,7 @@
       become_user: root
 
 - name: Create MongoDB data directory
-  file: # noqa 208
+  file:
     path: "{{ mongodb_data_path }}"
     owner: mongodb
     group: mongodb
