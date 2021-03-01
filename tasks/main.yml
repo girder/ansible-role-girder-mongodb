@@ -12,7 +12,7 @@
     repo: >-
       deb
       https://repo.mongodb.org/apt/ubuntu
-      {{ ansible_distribution_release }}/mongodb-org/{{ mongodb_version }}
+      {{ ansible_facts['distribution_release'] }}/mongodb-org/{{ mongodb_version }}
       multiverse
     update_cache: true
   become: true
