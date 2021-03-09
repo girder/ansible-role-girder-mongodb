@@ -18,19 +18,49 @@
   become: true
   become_user: root
 
-- name: Install MongoDB packages
+- name: Install MongoDB server package
   apt:
-    name:
-      # The "mongodb_version" is the only one available in the PPA on a clean
-      # install, but an existing install may have other minor versions
-      # available or installed
-      - "mongodb-org-server={{ mongodb_version }}*"
-      - "mongodb-org-tools={{ mongodb_version }}*"
+    # The "mongodb_version" is the only one available in the PPA on a clean
+    # install, but an existing install may have other minor versions
+    # available or installed
+    name: "mongodb-org-server={{ mongodb_version }}*"
     force_apt_get: true
   notify:
     - Restart MongoDB
   become: true
   become_user: root
+
+- when: mongodb_version is version('4.4', '<')
+  block:
+    - name: Install MongoDB pre-4.4 tools package
+      apt:
+        name: "mongodb-org-tools={{ mongodb_version }}*"
+        force_apt_get: true
+      become: true
+      become_user: root
+
+- when: mongodb_version is version('4.4', '>=')
+  block:
+    - name: Remove MongoDB pre-4.4 tools package
+      apt:
+        # In MongoDB 4.4+, "mongodb-org-tools" is a meta-package which also
+        # pulls in the (undesired by us) "install_compass" script. This causes
+        # Apt conflicts when upgrading from pre-4.4 to 4.4, so if 4.4+ is the
+        # target version, ensure it's removed before upgrading.
+        name: mongodb-org-tools
+        state: absent
+        force_apt_get: true
+      become: true
+      become_user: root
+
+    - name: Install MongoDB 4.4+ tools package
+      apt:
+        # "mongodb-database-tools" doesn't use the same versioning scheme as
+        # other packages, so it's not feasible to request a particular version
+        name: mongodb-database-tools
+        force_apt_get: true
+      become: true
+      become_user: root
 
 - name: Create MongoDB data directory
   file: # noqa 208
