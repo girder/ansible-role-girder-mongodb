@@ -1,9 +1,9 @@
 ---
 galaxy_info:
   role_name: mongodb
-  description: Install the MongoDB database
+  author: girder
+  description: Install MongoDB server.
 
-  author: Kitware, Inc.
   company: Kitware, Inc.
   issue_tracker_url:
     https://github.com/girder/ansible-role-girder-mongodb/issues
