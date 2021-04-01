@@ -28,6 +28,7 @@ A typical playbook using this role may look like:
   roles:
     - role: girder.mongodb
       vars:
+        # Pin version to prevent automatic upgrades
         mongodb_version: "4.4"
 ```
 
