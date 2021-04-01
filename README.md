@@ -27,6 +27,9 @@ A typical playbook using this role may look like:
     ansible_python_interpreter: auto
   roles:
     - role: girder.mongodb
+      vars:
+        # Pin version to prevent automatic upgrades
+        mongodb_version: "4.4"
 ```
 
 A typical
